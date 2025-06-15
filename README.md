@@ -37,3 +37,27 @@ cp .gitconfig ~/.gitconfig
 - Color-coded output for better readability
 - Git LFS support
 - Sensible defaults for push/pull behavior
+- **Clear Old Branches** - Cross-platform branch cleanup functionality
+
+## Branch Cleanup
+
+This repository includes a cross-platform "Clear Old Branches" feature that removes local branches that have been deleted from the remote repository.
+
+### Usage Options
+
+1. **Git Alias** (Recommended): `git clear-old-branches`
+2. **VS Code Task**: Use `Ctrl+Shift+P` → "Tasks: Run Task" → "Clear Old Branches"
+3. **Bash Script**: `./clear-old-branches.sh`
+4. **PowerShell Script**: `./Clear-OldBranches.ps1`
+
+### What it does
+
+1. Switches to the main branch
+2. Updates remote references and prunes deleted branches
+3. Identifies local branches that track deleted remote branches
+4. Safely deletes those local branches
+
+This is equivalent to the PowerShell command:
+```powershell
+git checkout main; git remote update origin --prune; git branch -vv | Select-String -Pattern ": gone]" | % { $_.toString().Trim().Split(" ")[0]} | % {git branch -D $_}
+```

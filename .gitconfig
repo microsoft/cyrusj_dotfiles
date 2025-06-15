@@ -36,6 +36,7 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	visual = !gitk
+	clear-old-branches = "!f() { git checkout main && git remote update origin --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D; }; f"
 
 [color]
 	ui = auto
