@@ -6,5 +6,7 @@
         "github.copilot-chat",
         "microsoft.ev2-authoring-extension",
         "ms-dotnettools.csdevkit",
-        "ms-vscode-remote.vscode-remote-extensionpack"    ]
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.vscode-speech"
+    ]
 }
